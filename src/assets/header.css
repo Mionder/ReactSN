@@ -1,0 +1,36 @@
+.header{
+    background-color: #a100ad;
+    color: #fff;
+    width: 100%;
+    height: 70px;
+}
+
+.header-nav{
+
+}
+
+.header-list{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 70px;
+}
+
+.header-item{
+    text-transform: uppercase;
+    text-decoration: none;
+    font-size: 18px;
+    font-weight: 700;
+    color: #ffffff;
+    list-style: none;
+    cursor: pointer;
+}
+.header-item a{
+    text-transform: uppercase;
+    text-decoration: none;
+    font-size: 18px;
+    font-weight: 700;
+    color: #ffffff;
+    list-style: none;
+    cursor: pointer;
+}

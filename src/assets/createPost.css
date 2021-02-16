@@ -1,0 +1,76 @@
+.create-post{
+    padding: 25px 0;
+}
+.title{
+    font-size: 32px;
+    font-weight: 700;
+    margin: 10px 0;
+    line-height: 120%;
+    color: #232323;
+    text-transform: uppercase;
+    text-align: left;
+}
+.form-post{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+}
+.post-label{
+    padding: 8px 0;
+    font-size: 16px;
+    font-weight: 500;
+    color: #232323;
+    line-height: 120%;
+}
+.post-input{
+    padding: 10px;
+    max-width: 500px;
+    width: 100%;
+    font-size: 18px;
+    border: 1px solid #a100ad;
+    border-radius: 8px;
+    box-shadow: 0 0 3px rgba(23,23,23,0.15);
+}
+#text-post{
+    resize: none;
+    max-width: 500px;
+    width: 100%;
+    height: auto;
+    padding: 20px;
+    font-size: 18px;
+    border: 1px solid #a100ad;
+    border-radius: 8px;
+    box-shadow: 0 0 3px rgba(23,23,23,0.15);
+}
+
+.btn-post{
+    background-color: #a100ad;
+    color: #fff;
+    padding: 10px 25px;
+    border-radius: 6px;
+    max-width: 250px;
+    width: 100%;
+    min-height: 50px;
+    font-size: 20px;
+    font-weight: 500;
+    border: none;
+    margin: 20px 0 0 0;
+    cursor: pointer;
+    transition: 0.3s;
+}
+.btn-post:hover{
+    background-color: #780080;
+    transition: 0.3s;
+}
+
+.MuiTypography-gutterBottom{
+    margin-bottom: 0 !important;
+}
+.MuiAlert-standardError{
+    align-items: center;
+}
+
+.error-block{
+    padding: 20px 0;
+}

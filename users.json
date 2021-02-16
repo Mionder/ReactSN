@@ -1,0 +1,153 @@
+{
+  "users": [
+    {
+      "id": 1,
+      "login": "John",
+      "password": "tttTTT54@",
+      "email": "test@mail.com",
+      "image": ""
+    },
+    {
+      "id": 2,
+      "image": "Home undertale.png"
+    },
+    {
+      "id": 3,
+      "image": "images.png"
+    },
+    {
+      "id": 4
+    },
+    {
+      "username": "Lars",
+      "id": 5,
+      "password": "123Qwe!",
+      "email": "tesss@mail.ru",
+      "image": "infrastructure2.png"
+    },
+    {
+      "username": "Lars",
+      "email": "tesss@mail.ru",
+      "password": "123Qwe!",
+      "id": 6,
+      "image": ""
+    },
+    {
+      "username": "hwhwhwhwhw",
+      "email": "tesss@mail.ru",
+      "password": "123Qweqt!",
+      "id": 7,
+      "image": ""
+    },
+    {
+      "username": "Lars",
+      "email": "dnc.sergey.oleinik+2@gmail.com",
+      "password": "1234Qwe@",
+      "id": 8,
+      "image": ""
+    },
+    {
+      "username": "Lars",
+      "email": "admin@admin.admin",
+      "password": "1231Qq5!",
+      "id": 9,
+      "image": ""
+    },
+    {
+      "username": "Lars",
+      "id": 10,
+      "password": "123414qrtqtqQ!",
+      "email": "yy@mail.ru",
+      "image": "Без имени-2.png"
+    },
+    {
+      "username": "Lars",
+      "id": 11,
+      "password": "123414qrtqtqQ!",
+      "email": "yy@mail.ru",
+      "image": "infrastructure3.png"
+    },
+    {
+      "username": "Lars",
+      "email": "yy@mail.ru",
+      "password": "123414qrtqtqQ!",
+      "id": 12,
+      "image": ""
+    },
+    {
+      "username": "Lars",
+      "email": "yy@mail.ru",
+      "password": "123414qrtqtqQ!",
+      "id": 13,
+      "image": ""
+    },
+    {
+      "username": "Lars",
+      "email": "test0011@mail.com",
+      "password": "12341Qw!",
+      "id": 14,
+      "image": ""
+    },
+    {
+      "username": "wgwggwgwgw",
+      "id": 15,
+      "password": "123141qtqtQ!",
+      "email": "gwgwgwg@gmag.com",
+      "image": "book banner_.png"
+    },
+    {
+      "username": "user",
+      "email": "usert@magai.com",
+      "password": "1231@gagaT",
+      "passwordConfirm": "1231@gagaT",
+      "id": 16,
+      "image": ""
+    },
+    {
+      "username": "admin",
+      "email": "admin@magai.com",
+      "password": "admin!Admin",
+      "passwordConfirm": "admin!Admin",
+      "id": 17,
+      "image": "",
+      "isAdmin": true
+    }
+  ],
+  "posts": [
+    {
+      "name": "New post v2",
+      "date": "2021-02-25",
+      "info": "post text",
+      "id": 2,
+      "status": "Rejected"
+    },
+    {
+      "name": "post in time",
+      "date": "2021-02-14",
+      "info": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
+      "id": 3,
+      "status": "Approved"
+    },
+    {
+      "name": "rtkrkr",
+      "date": "2021-02-08",
+      "info": "\"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.\"",
+      "id": 9,
+      "status": "Approved"
+    },
+    {
+      "name": "Second post",
+      "date": "2021-02-11",
+      "info": "New post information\ninfostatusstatusstatusstatusstatus",
+      "id": 10,
+      "status": "Approved"
+    },
+    {
+      "name": "Some post about animal",
+      "date": "2021-02-15",
+      "info": "Post about animal desc\nPost about animal desc\nPost about animal desc",
+      "id": 11,
+      "status": "Approved"
+    }
+  ]
+}
