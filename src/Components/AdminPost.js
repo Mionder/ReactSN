@@ -8,6 +8,7 @@ export default function AdminPost(props){
             "info": props.info,
             "id": props.id,
             "status": status,
+            "category": props.category,
         }
 
         const putMethod = {
@@ -30,6 +31,7 @@ export default function AdminPost(props){
                 {props.name}
             </div>
             <div className="content-post">
+                <p className="category-post">Category: {props.category}</p>
                 {props.info}
             </div>
             <div className="footer-post">

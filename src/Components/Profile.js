@@ -55,10 +55,7 @@ export default class Profile extends Component{
                 { active &&
                     <img src={`../../storage/img-profile/${users[4].image}`} alt="no-ui-img"/>
                 }
-                {/*<img src={HUI} alt="1"/>*/}
-                {/*<img src="../../storage/img-profile" alt=""/>*/}
                 <ImageUploadering getPictures={this.getPictures} />
-                {/*<ImageUploader getPictures={this.getPictures()} />*/}
             </div>
         )
     }

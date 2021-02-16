@@ -65,7 +65,7 @@
       "id": 11,
       "password": "123414qrtqtqQ!",
       "email": "yy@mail.ru",
-      "image": "infrastructure3.png"
+      "image": "infrastructure2.png"
     },
     {
       "username": "Lars",
@@ -119,35 +119,70 @@
       "date": "2021-02-25",
       "info": "post text",
       "id": 2,
-      "status": "Rejected"
+      "status": "Rejected",
+      "category": "books"
     },
     {
       "name": "post in time",
       "date": "2021-02-14",
       "info": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
       "id": 3,
-      "status": "Approved"
+      "status": "Approved",
+      "category": "books"
     },
     {
       "name": "rtkrkr",
       "date": "2021-02-08",
       "info": "\"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.\"",
       "id": 9,
-      "status": "Approved"
+      "status": "Approved",
+      "category": "books"
     },
     {
       "name": "Second post",
       "date": "2021-02-11",
       "info": "New post information\ninfostatusstatusstatusstatusstatus",
       "id": 10,
-      "status": "Approved"
+      "status": "Rejected",
+      "category": "books"
     },
     {
       "name": "Some post about animal",
       "date": "2021-02-15",
       "info": "Post about animal desc\nPost about animal desc\nPost about animal desc",
       "id": 11,
-      "status": "Approved"
+      "status": "Rejected",
+      "category": "books"
+    },
+    {
+      "name": "Name travel",
+      "date": "2021-02-15",
+      "info": "travel\ntravel\ntravel\ntravel\ntravel\ntraveltraveltraveltraveltraveltraveltravel",
+      "id": 12,
+      "status": "Approved",
+      "category": "work"
+    },
+    {
+      "name": "Travel story",
+      "date": "2021-02-09",
+      "info": "my travel to india\nmy travel to india\nmy travel to india\nmy travel to india\nmy travel to india\nmy travel to india\n",
+      "id": 13,
+      "status": "Approved",
+      "category": "travel"
+    },
+    {
+      "name": "Video games",
+      "date": "2021-02-09",
+      "info": "Video games\nVideo games\nVideo games\nVideo games\nVideo games",
+      "id": 14,
+      "status": "Approved",
+      "category": "games"
     }
+  ],
+  "categotiesPosts": [
+    "travel",
+    "work",
+    "books",
+    "games"
   ]
 }

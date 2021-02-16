@@ -4,9 +4,25 @@
     justify-content: center;
     align-items: center;
     padding: 15px;
-    max-width: 550px;
+    max-width: 450px;
     width: 100%;
 }
+@media(max-width: 1200px){
+    .post{
+        max-width: 350px;
+    }
+}
+@media(max-width: 992px){
+    .post{
+        max-width: 100%;
+    }
+    .posts-wrapper{
+        justify-content: center;
+        align-items: center;
+    }
+}
+
+
 
 .header-post{
     background-color: #a100ad;
@@ -22,6 +38,18 @@
     border-top-right-radius: 8px;
     text-transform: capitalize;
     margin-bottom: -1.5px;
+}
+.book-st{
+    background-color: #8d0000;
+}
+.travel-st{
+    background-color: #b14b00;
+}
+.work-st{
+    background-color: #4b9a00;
+}
+.games-st{
+    background-color: #003da0;
 }
 .content-post{
     padding: 15px;
@@ -60,10 +88,10 @@
     display: flex;
     justify-content: space-around;
     align-items: center;
-    border-bottom-left-radius: 8px;
-    border-bottom-right-radius: 8px;
+    border-radius: 8px;
     width: 100%;
     padding: 10px;
+    border-top: none;
 }
 
 .btn-post-admin{
@@ -76,4 +104,11 @@
     font-weight: 500;
     background-color: #a100ad;
     cursor: pointer;
+}
+
+.category-post{
+    color: #232323;
+    font-weight: 500;
+    font-size: 18px;
+    padding-bottom: 15px;
 }

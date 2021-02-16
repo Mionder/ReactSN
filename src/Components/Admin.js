@@ -18,9 +18,9 @@ export default class Admin extends Component{
     }
     renderPosts = (arr) => {
         return arr.map((item)=>{
-            const {id,name, date, info, status} = item;
+            const {id,name, date, info, status, category} = item;
             return(
-                <AdminPost key={id} name={name} info={info} date={date} id={id} status={status} />
+                <AdminPost key={id} name={name} info={info} date={date} id={id} status={status} category={category} />
             )
         })
     }

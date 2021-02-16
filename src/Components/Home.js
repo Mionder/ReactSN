@@ -1,67 +1,119 @@
 import React, {Component} from "react";
 import {Link} from "react-router-dom";
 import SinglePost from "./SinglePost";
-export default class Home extends Component{
+import "../assets/main.css";
+export default class Home extends Component {
     state = {
         posts: [],
         isReady: false,
+        filteredPosts: [],
+        categories: [],
+        category: "",
+        fullUser: "",
     }
-    async componentDidMount () {
-        await fetch("http://localhost:3000/posts")
+
+    async componentDidMount() {
+        let id = localStorage.getItem("userId");
+        fetch(`http://localhost:3000/users/${id}`)
             .then((res)=>{
                 return res.json()
             })
             .then(async(data)=>{
+                await this.setState({fullUser: data});
+            })
+            .catch(error => console.log(error))
+
+        await fetch("http://localhost:3000/posts")
+            .then((res) => {
+                return res.json()
+            })
+            .then(async (data) => {
                 await this.setState({posts: data});
             })
             .catch(error => console.log(error))
         await this.filterPosts();
+
+        fetch("http://localhost:3000/categotiesPosts")
+            .then((res) => {
+                return res.json()
+            })
+            .then(async (data) => {
+                await this.setState({categories: data, isReady: true});
+            })
+            .catch(error => console.log(error))
     }
+
     filterPosts = () => {
-        const {posts} = this.state;
+        const {posts, category} = this.state;
         let currentDate = new Date();
         let today = {
             year: currentDate.getFullYear(),
-            month: +currentDate.getMonth()+1,
+            month: +currentDate.getMonth() + 1,
             day: currentDate.getDate(),
         }
-        if (+today.month < 10){
-            today.month = "0"+today.month;
+        if (+today.month < 10) {
+            today.month = "0" + today.month;
         }
         let todayV2 = (today.year).toString() + "-" + (today.month).toString() + "-" + (today.day).toString();
-        let filtered = posts.filter(item=> (item.date < todayV2 && item.status === "Approved"));
-        this.setState({isReady: true, posts: filtered})
-        // console.log(filtered);
-        // posts.forEach((item)=>{
-        //     console.log(todayV2, item.date)
-        //     if(todayV2 > item.date){
-        //
-        //     }
-        // })
-        // console.log(today);
+        let filtered;
+        if (category === "") {
+            filtered = posts.filter(item => (item.date < todayV2 && item.status === "Approved"));
+        } else {
+            filtered = posts.filter(item => (item.date < todayV2 && item.status === "Approved" && item.category === category));
+        }
+        this.setState({filteredPosts: filtered})
     }
     renderPosts = (arr) => {
-        console.log(arr);
-         return arr.map((item)=>{
-             const {id,name, date, info} = item;
-             return(
-                 <SinglePost key={id} name={name} info={info} date={date} />
-             )
-         })
+        return arr.map((item) => {
+            const {id, name, date, info, category} = item;
+            return (
+                <SinglePost key={id} name={name} category={category} info={info} date={date}/>
+            )
+        })
     }
 
+    renderSelectCategories = () => {
+        const {categories} = this.state;
+        return categories.map((item, index) => {
+            return (
+                <option onClick={this.filterPosts} key={index} value={item}>{item}</option>
+            )
+        })
+    }
+
+
     render() {
-        const {username,isReady, posts} = this.state;
-        let renderedPosts;
-        if(isReady){
-            renderedPosts = this.renderPosts(posts);
+        const {fullUser, isReady, posts, categories, filteredPosts} = this.state;
+        let renderedPosts, myCategories;
+        if (isReady) {
+            renderedPosts = this.renderPosts(filteredPosts);
+            myCategories = this.renderSelectCategories(categories);
         }
-        return(
+        return (
             <div className="home">
                 <div className="_container">
-                    Home page
-                    <div className="posts-wrapper">
-                        {renderedPosts}
+                    <div className="home-wrapper">
+                        <div className="sidebar">
+                            <ul className="sidebar-list">
+                                <li className="sidebar-item">{fullUser.username ? `Hello, ${fullUser.username}` : "Welcome to social network"}</li>
+                                {fullUser.username && <li className="sidebar-item"><Link to="/create-post">Create post</Link></li> }
+                                <li className="sidebar-item">Shop</li>
+                                {fullUser.username &&<li className="sidebar-item"><Link onClick={()=>localStorage.setItem("username",undefined)} to="/login">Log out</Link></li>}
+                            </ul>
+                        </div>
+                        <div className="content-wrapper">
+                            <select
+                                className="home-category-select"
+                                onChange={(e) => this.setState({category: e.target.value})}
+                                name="category-post" id="category-post"
+                                placeholder="Enter post category">
+                                <option onClick={this.filterPosts} selected value="">All</option>
+                                {myCategories}
+                            </select>
+                            <div className="posts-wrapper">
+                                {renderedPosts}
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
