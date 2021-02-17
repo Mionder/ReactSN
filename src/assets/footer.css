@@ -1,0 +1,14 @@
+.footer{
+    background-color: #a100ad;
+    color: #fff;
+    width: 100%;
+    height: 60px;
+}
+.footer-wrapper{
+    height: 60px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 18px;
+    font-weight: 500;
+}

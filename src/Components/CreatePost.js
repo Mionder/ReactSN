@@ -40,12 +40,15 @@ export default class CreatePost extends Component {
             localError = true;
         }
         if(!localError){
+            let idUser = localStorage.getItem("userId");
             const post = {
                 "name": name,
                 "date": date,
                 "info": info,
                 "category": category,
                 "status": "Not Approved",
+                "ownerId": idUser,
+                "clicks": 0,
             }
             fetch("http://localhost:3000/posts",
                 {

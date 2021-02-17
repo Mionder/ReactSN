@@ -1,6 +1,9 @@
 .App {
   text-align: center;
 }
+.content{
+  min-height: calc(100vh - 70px - 60px);
+}
 *{
   font-family: 'Montserrat', sans-serif !important;
 }

@@ -10,6 +10,7 @@ export default class Home extends Component {
         categories: [],
         category: "",
         fullUser: "",
+        dateFilter: "from-to"
     }
 
     async componentDidMount() {
@@ -28,6 +29,7 @@ export default class Home extends Component {
                 return res.json()
             })
             .then(async (data) => {
+                console.log(data);
                 await this.setState({posts: data});
             })
             .catch(error => console.log(error))
@@ -44,7 +46,7 @@ export default class Home extends Component {
     }
 
     filterPosts = () => {
-        const {posts, category} = this.state;
+        const {posts, category, dateFilter} = this.state;
         let currentDate = new Date();
         let today = {
             year: currentDate.getFullYear(),
@@ -57,17 +59,22 @@ export default class Home extends Component {
         let todayV2 = (today.year).toString() + "-" + (today.month).toString() + "-" + (today.day).toString();
         let filtered;
         if (category === "") {
-            filtered = posts.filter(item => (item.date < todayV2 && item.status === "Approved"));
+            filtered = posts.filter(item => (item.date <= todayV2 && item.status === "Approved"));
         } else {
-            filtered = posts.filter(item => (item.date < todayV2 && item.status === "Approved" && item.category === category));
+            filtered = posts.filter(item => (item.date <= todayV2 && item.status === "Approved" && item.category === category));
+        }
+        if(dateFilter === "from-to"){
+            filtered = filtered.sort((a, b) => a.date > b.date ? 1 : -1);
+        } else {
+            filtered = filtered.sort((a, b) => a.date < b.date ? 1 : -1);
         }
         this.setState({filteredPosts: filtered})
     }
     renderPosts = (arr) => {
         return arr.map((item) => {
-            const {id, name, date, info, category} = item;
+            const {id, name, date, ownerId, status, clicks, info, category} = item;
             return (
-                <SinglePost key={id} name={name} category={category} info={info} date={date}/>
+                <SinglePost status={status} ownerId={ownerId} clicks={clicks} id={id} key={id} name={name} category={category} info={info} date={date}/>
             )
         })
     }
@@ -102,14 +109,25 @@ export default class Home extends Component {
                             </ul>
                         </div>
                         <div className="content-wrapper">
-                            <select
-                                className="home-category-select"
-                                onChange={(e) => this.setState({category: e.target.value})}
-                                name="category-post" id="category-post"
-                                placeholder="Enter post category">
-                                <option onClick={this.filterPosts} selected value="">All</option>
-                                {myCategories}
-                            </select>
+                            <div className="filters-wrapper">
+                                <select
+                                    className="home-category-select"
+                                    onChange={(e) => this.setState({category: e.target.value})}
+                                    name="category-post" id="category-post"
+                                    placeholder="Enter post category">
+                                    <option onClick={this.filterPosts} selected value="">All</option>
+                                    {myCategories}
+                                </select>
+                                <select
+                                    name="date-filter"
+                                    id="date-filter"
+                                    onChange={(e)=>this.setState    ({dateFilter: e.target.value})}
+                                    className="home-category-select">
+                                    <option onClick={this.filterPosts} value="to-from">From recent</option>
+                                    <option selected onClick={this.filterPosts} value="from-to">To recent</option>
+                                </select>
+                            </div>
+
                             <div className="posts-wrapper">
                                 {renderedPosts}
                             </div>

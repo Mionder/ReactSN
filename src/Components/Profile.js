@@ -1,61 +1,83 @@
 import React, {Component} from "react";
-import ImageUploader from "react-images-upload";
-import ImageUploadering from "./ImageUploader";
+import "../assets/profile.css";
+import {Link} from "react-router-dom";
 export default class Profile extends Component{
     state = {
         pictures: {},
-        active: false,
-        users: [],
+        isReady: false,
+        user: {},
+        posts: [],
     }
     componentDidMount() {
-         fetch("http://localhost:3000/users")
+        let userId = localStorage.getItem("userId");
+         fetch(`http://localhost:3000/users/${userId}`)
             .then((res)=>{
                 return res.json()
             })
             .then(async(data)=>{
-                console.log(data);
-                await this.setState({users:data});
+                await this.setState({user:data});
             })
             .catch((err)=>{
                 console.log(err)
             })
+        fetch(`http://localhost:3000/posts`)
+            .then((res)=>{
+                return res.json()
+            })
+            .then(async(data)=>{
+                let filteredPosts = data.filter(item=> +item.ownerId === +userId)
+                await this.setState({posts:filteredPosts, isReady: true});
+            })
+            .catch((err)=>{
+                console.log(err)
+            })
+
     }
 
-    getPictures = (data) => {
-        let activeId = 11;
-        const {users} = this.state;
-        this.setState({pictures: data, active: true});
-        console.log(data);
-        let newData = {
-            "username": users[activeId-1].username,
-            "id": users[activeId-1].id,
-            "password": users[activeId-1].password,
-            "email": users[activeId-1].email,
-            "image": data[0].name
-        }
-        const putMethod = {
-            method: "PUT",
-            headers: {
-                'Content-type': 'application/json; charset=UTF-8'
-            },
-            body: JSON.stringify(newData)
-        }
-
-// make the HTTP put request using fetch api
-        fetch(`http://localhost:3000/users/${activeId}`, putMethod)
-            .then(response => response.json())
-            .then(data => console.log(data))
-            .catch(err => console.log(err))
-    }
-    render() {
-        const {users,pictures, active} = this.state;
-        // console.log(pictures[0].name);
+    renderUser = (user) => {
         return(
-            <div>
-                { active &&
-                    <img src={`../../storage/img-profile/${users[4].image}`} alt="no-ui-img"/>
-                }
-                <ImageUploadering getPictures={this.getPictures} />
+            <div className="user">
+                <div className="user-photo">
+                    <img src="https://fakeimg.pl/250x250/" alt="no-img" />
+                </div>
+                <div className="user-info">
+                    <p className="user-username">Welcome, {user.username}</p>
+                </div>
+            </div>
+        )
+    }
+    renderPosts = (arr) => {
+        return arr.map((item, index)=>{
+            return(
+                <div key={index} className="user-post">
+                    <p><Link onClick={()=>localStorage.setItem("postId", item.id)} to={{pathname:`/post/${item.id}`, propsId:item.id}}>{item.name}</Link></p>
+                    <p>{item.date}</p>
+                </div>
+            )
+        })
+    }
+
+    render() {
+        const {user,pictures, isReady, posts} = this.state;
+        // console.log(pictures[0].name);
+        let userCurrent, userPosts;
+        if(isReady){
+            userCurrent = this.renderUser(user);
+            userPosts = this.renderPosts(posts);
+        }
+        return(
+            <div className="profile">
+                <div className="_container">
+                    <div className="profile-wrapper">
+                        <div className="profile-info">
+                            {userCurrent}
+                        </div>
+                        <div className="user-posts-wrapper">
+                            <p className="profile-title">Your posts: </p>
+                            {userPosts}
+                        </div>
+                    </div>
+                </div>
             </div>
         )
     }

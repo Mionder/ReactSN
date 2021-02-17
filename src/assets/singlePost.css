@@ -27,10 +27,6 @@
 .header-post{
     background-color: #a100ad;
     padding: 15px;
-    color: #fff;
-    text-align: center;
-    font-weight: 700;
-    font-size: 24px;
     /*border: 1px solid #787878;*/
     border-bottom: 1px solid #ffffff;
     width: 100%;
@@ -38,6 +34,20 @@
     border-top-right-radius: 8px;
     text-transform: capitalize;
     margin-bottom: -1.5px;
+    cursor: pointer;
+    color: #fff;
+    text-align: center;
+    font-weight: 700;
+    font-size: 24px;
+    text-decoration: none;
+}
+.header-post a{
+    cursor: pointer;
+    color: #fff;
+    text-align: center;
+    font-weight: 700;
+    font-size: 24px;
+    text-decoration: none;
 }
 .book-st{
     background-color: #8d0000;
@@ -80,7 +90,7 @@
     display: flex;
     flex-wrap: wrap;
     justify-content: space-between;
-    align-items: center;
+    align-items: flex-start;
 }
 
 .controls-post{
@@ -111,4 +121,8 @@
     font-weight: 500;
     font-size: 18px;
     padding-bottom: 15px;
+}
+
+.post-page{
+    padding: 25px 0;
 }

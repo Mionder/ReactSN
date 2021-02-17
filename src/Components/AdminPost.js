@@ -9,6 +9,8 @@ export default function AdminPost(props){
             "id": props.id,
             "status": status,
             "category": props.category,
+            "ownerId": props.ownerId,
+            "clicks": props.clicks,
         }
 
         const putMethod = {
@@ -40,8 +42,8 @@ export default function AdminPost(props){
             </div>
             <div className="controls-post">
                 {props.status}
-                <button onClick={()=>postUpdate("Rejected")} className="btn-post-admin">Rejected</button>
-                <button onClick={()=>postUpdate("Approved")} className="btn-post-admin">Approved</button>
+                <button onClick={()=>postUpdate("Rejected")} className="btn-post-admin">Reject</button>
+                <button onClick={()=>postUpdate("Approved")} className="btn-post-admin">Approve</button>
                 {/*<button className="btn-post"></button>*/}
             </div>
         </div>

@@ -10,6 +10,8 @@ import Home from "./Components/Home";
 import Header from "./Components/Header";
 import CreatePost from "./Components/CreatePost";
 import Admin from "./Components/Admin";
+import PostPage from "./Components/PostPage";
+import Footer from "./Components/Footer";
 // import {useFormik} from "formik";
 function App() {
     // const [users, setUsers] = useState([]);
@@ -20,12 +22,16 @@ function App() {
       <Router>
           <div className="App">
               <Header />
-              <Route path="/admin" component={Admin} exact />
-              <Route path="/register" component={DisplayingErrorMessagesExample} exact />
-              <Route path="/" component={Home} exact />
-              <Route path="/login" component={Login} exact/>
-              <Route path="/profile" component={Profile} exact />
-              <Route path="/create-post" component={CreatePost} exact/>
+              <div className="content">
+                  <Route path="/admin" component={Admin} exact />
+                  <Route path="/register" component={DisplayingErrorMessagesExample} exact />
+                  <Route path="/" component={Home} exact />
+                  <Route path="/post/:id" component={PostPage} exact />
+                  <Route path="/login" component={Login} exact/>
+                  <Route path="/profile/:username" component={Profile} exact />
+                  <Route path="/create-post" component={CreatePost} exact/>
+              </div>
+              <Footer />
           </div>
       </Router>
 
