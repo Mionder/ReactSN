@@ -79,3 +79,10 @@
   background: #232323;
   padding: 25px;
 }
+
+.error-reg{
+  font-size: 16px;
+  color: #ffeded;
+  line-height: 120%;
+  font-weight: 500;
+}

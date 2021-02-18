@@ -1,20 +1,17 @@
 import React, {Component} from "react";
 import Product from "./Product";
 import {Link} from "react-router-dom";
-export default class Shop extends Component{
+import {connect} from "react-redux";
+
+class Shop extends Component {
     state = {
         products: [],
         isReady: false,
     }
+
     async componentDidMount() {
-        await fetch("http://localhost:3000/products")
-            .then((res) => {
-                return res.json()
-            })
-            .then(async (data) => {
-                await this.setState({products: data, isReady:true});
-            })
-            .catch(error => console.log(error))
+        const {products} = this.props;
+        await this.setState({products, isReady: true})
         this.filterProducts();
     }
 
@@ -25,9 +22,9 @@ export default class Shop extends Component{
     }
 
     renderProducts = (arr) => {
-        return arr.map((item, index)=>{
-            return(
-                <Product key={index} product={item} />
+        return arr.map((item, index) => {
+            return (
+                <Product key={index} product={item}/>
             )
         })
     }
@@ -35,15 +32,17 @@ export default class Shop extends Component{
     render() {
         const {products, isReady} = this.state;
         let shopProducts;
-        if(isReady){
+        if (isReady) {
             shopProducts = this.renderProducts(products);
         }
-        return(
+        return (
             <div className="shop">
                 <div className="_container">
                     <div className="title-wrapper">
                         <p className="title">Small shop with all you need</p>
-                        <Link to="/shop/create-product"><button className="btn-shop">Create product</button></Link>
+                        <Link to="/shop/create-product">
+                            <button className="btn-shop">Create product</button>
+                        </Link>
                     </div>
                     <div className="shop-wrapper">
                         <div className="filters-shop">
@@ -58,3 +57,7 @@ export default class Shop extends Component{
         )
     }
 }
+
+export default connect(state => ({
+    products: state.products
+}))(Shop)

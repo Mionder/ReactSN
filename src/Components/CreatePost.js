@@ -1,8 +1,7 @@
 import React, {Component} from "react";
 import "../assets/createPost.css";
-import { Alert, AlertTitle } from '@material-ui/lab';
-import DrugAndDrop from "./DrugAndDrop";
-import ImageUploadering from "./ImageUploader";
+import {Alert, AlertTitle} from '@material-ui/lab';
+
 export default class CreatePost extends Component {
     state = {
         name: "",
@@ -17,11 +16,11 @@ export default class CreatePost extends Component {
 
     componentDidMount() {
         fetch("http://localhost:3000/categotiesPosts")
-            .then((res)=>{
+            .then((res) => {
                 return res.json()
             })
-            .then(async(data)=>{
-                await this.setState({categories: data, isReady:true});
+            .then(async (data) => {
+                await this.setState({categories: data, isReady: true});
             })
             .catch(error => console.log(error))
     }
@@ -35,11 +34,11 @@ export default class CreatePost extends Component {
             this.setState({isError: true, errorMessage: "You need to enter all fields"})
             localError = true;
         }
-        if(info.length < 50){
+        if (info.length < 50) {
             this.setState({isError: true, errorMessage: "Post info must be more than 50 symbols"})
             localError = true;
         }
-        if(!localError){
+        if (!localError) {
             let idUser = localStorage.getItem("userId");
             const post = {
                 "name": name,
@@ -69,17 +68,17 @@ export default class CreatePost extends Component {
 
     renderSelectCategories = () => {
         const {categories} = this.state;
-        return categories.map((item, index)=>{
-            return(
+        return categories.map((item, index) => {
+            return (
                 <option key={index} value={item}>{item}</option>
             )
         })
     }
 
     render() {
-        const {isError, errorMessage, categories,isReady} = this.state;
+        const {isError, errorMessage, categories, isReady} = this.state;
         let myCategories;
-        if(isReady){
+        if (isReady) {
             myCategories = this.renderSelectCategories(categories);
         }
         return (
@@ -93,7 +92,8 @@ export default class CreatePost extends Component {
                             <input onChange={(e) => this.setState({name: e.target.value})} type="text" id="name-post"
                                    placeholder="Enter post name" name="name" className="post-input"/>
                             <label htmlFor="category-post" className="post-label">Post category</label>
-                            <select onChange={(e)=>this.setState({category: e.target.value})} name="category-post" id="category-post" placeholder="Enter post category" className="post-input">
+                            <select onChange={(e) => this.setState({category: e.target.value})} name="category-post"
+                                    id="category-post" placeholder="Enter post category" className="post-input">
                                 <option selected disabled value="">Select category</option>
                                 {myCategories}
                             </select>
@@ -108,16 +108,15 @@ export default class CreatePost extends Component {
                             </textarea>
                             <button onClick={this.createPost} className="btn-post">Create post</button>
 
-                            {/*<ImageUploadering getPictures={this.getPictures} />*/}
                         </div>
                     </div>
                     {
                         isError &&
-                            <div className="error-block">
-                                <Alert severity="error">
-                                    <AlertTitle>Error - {errorMessage}</AlertTitle>
-                                </Alert>
-                            </div>
+                        <div className="error-block">
+                            <Alert severity="error">
+                                <AlertTitle>Error - {errorMessage}</AlertTitle>
+                            </Alert>
+                        </div>
                     }
                 </div>
             </div>

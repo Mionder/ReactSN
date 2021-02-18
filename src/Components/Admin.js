@@ -1,9 +1,10 @@
 import React, {Component} from "react";
 import AdminPost from "./AdminPost";
 import Product from "./Product";
+import {connect} from "react-redux";
 import AdminProduct from "./AdminProduct";
 
-export default class Admin extends Component {
+class Admin extends Component {
     state = {
         posts: [],
         clicksAmount: 0,
@@ -19,24 +20,9 @@ export default class Admin extends Component {
     }
 
     async componentDidMount() {
-        await fetch("http://localhost:3000/posts")
-            .then((res) => {
-                return res.json()
-            })
-            .then(async (data) => {
-                await this.setState({posts: data});
-            })
-            .catch(error => console.log(error))
-
-        await fetch("http://localhost:3000/products")
-            .then((res) => {
-                return res.json()
-            })
-            .then(async (data) => {
-                await this.setState({products: data, isReady:true});
-            })
-            .catch(error => console.log(error))
-
+        const {posts, products} = this.props;
+        await this.setState({posts})
+        await this.setState({products, isReady: true})
         this.countAnalytic(this.state.posts);
     }
 
@@ -51,9 +37,9 @@ export default class Admin extends Component {
     }
 
     renderProducts = (arr) => {
-        return arr.map((item, index)=>{
-            return(
-                <AdminProduct key={index} product={item} />
+        return arr.map((item, index) => {
+            return (
+                <AdminProduct key={index} product={item}/>
             )
         })
     }
@@ -126,3 +112,8 @@ export default class Admin extends Component {
         )
     }
 }
+
+export default connect(state => ({
+    posts: state.posts,
+    products: state.products,
+}))(Admin)

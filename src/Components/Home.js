@@ -2,7 +2,9 @@ import React, {Component} from "react";
 import {Link} from "react-router-dom";
 import SinglePost from "./SinglePost";
 import "../assets/main.css";
-export default class Home extends Component {
+import {connect} from "react-redux";
+
+class Home extends Component {
     state = {
         posts: [],
         isReady: false,
@@ -14,35 +16,30 @@ export default class Home extends Component {
     }
 
     async componentDidMount() {
+        const {categories, posts} = this.props;
+
         let id = localStorage.getItem("userId");
         fetch(`http://localhost:3000/users/${id}`)
-            .then((res)=>{
+            .then((res) => {
                 return res.json()
             })
-            .then(async(data)=>{
+            .then(async (data) => {
                 await this.setState({fullUser: data});
             })
             .catch(error => console.log(error))
 
-        await fetch("http://localhost:3000/posts")
-            .then((res) => {
-                return res.json()
-            })
-            .then(async (data) => {
-                console.log(data);
-                await this.setState({posts: data});
-            })
-            .catch(error => console.log(error))
+        await this.setState({posts})
         await this.filterPosts();
 
-        fetch("http://localhost:3000/categotiesPosts")
-            .then((res) => {
-                return res.json()
+        for (let key in categories) {
+            await this.setState(prev => {
+                return {
+                    categories: prev.categories.concat(categories[key].category)
+                }
             })
-            .then(async (data) => {
-                await this.setState({categories: data, isReady: true});
-            })
-            .catch(error => console.log(error))
+        }
+        await this.setState({isReady: true})
+
     }
 
     filterPosts = () => {
@@ -63,7 +60,7 @@ export default class Home extends Component {
         } else {
             filtered = posts.filter(item => (item.date <= todayV2 && item.status === "Approved" && item.category === category));
         }
-        if(dateFilter === "from-to"){
+        if (dateFilter === "from-to") {
             filtered = filtered.sort((a, b) => a.date > b.date ? 1 : -1);
         } else {
             filtered = filtered.sort((a, b) => a.date < b.date ? 1 : -1);
@@ -74,7 +71,8 @@ export default class Home extends Component {
         return arr.map((item) => {
             const {id, name, date, ownerId, status, clicks, info, category} = item;
             return (
-                <SinglePost status={status} ownerId={ownerId} clicks={clicks} id={id} key={id} name={name} category={category} info={info} date={date}/>
+                <SinglePost status={status} ownerId={ownerId} clicks={clicks} id={id} key={id} name={name}
+                            category={category} info={info} date={date}/>
             )
         })
     }
@@ -90,7 +88,7 @@ export default class Home extends Component {
 
 
     render() {
-        const {fullUser, isReady, posts, categories, filteredPosts} = this.state;
+        const {fullUser, isReady, categories, filteredPosts} = this.state;
         let renderedPosts, myCategories;
         if (isReady) {
             renderedPosts = this.renderPosts(filteredPosts);
@@ -103,9 +101,12 @@ export default class Home extends Component {
                         <div className="sidebar">
                             <ul className="sidebar-list">
                                 <li className="sidebar-item">{fullUser.username ? `Hello, ${fullUser.username}` : "Welcome to social network"}</li>
-                                {fullUser.username && <li className="sidebar-item"><Link to="/create-post">Create post</Link></li> }
+                                {fullUser.username &&
+                                <li className="sidebar-item"><Link to="/create-post">Create post</Link></li>}
                                 <li className="sidebar-item">Shop</li>
-                                {fullUser.username &&<li className="sidebar-item"><Link onClick={()=>localStorage.setItem("username",undefined)} to="/login">Log out</Link></li>}
+                                {fullUser.username && <li className="sidebar-item"><Link
+                                    onClick={() => localStorage.setItem("username", undefined)} to="/login">Log
+                                    out</Link></li>}
                             </ul>
                         </div>
                         <div className="content-wrapper">
@@ -121,7 +122,7 @@ export default class Home extends Component {
                                 <select
                                     name="date-filter"
                                     id="date-filter"
-                                    onChange={(e)=>this.setState    ({dateFilter: e.target.value})}
+                                    onChange={(e) => this.setState({dateFilter: e.target.value})}
                                     className="home-category-select">
                                     <option onClick={this.filterPosts} value="to-from">From recent</option>
                                     <option selected onClick={this.filterPosts} value="from-to">To recent</option>
@@ -138,3 +139,8 @@ export default class Home extends Component {
         )
     }
 }
+
+export default connect(state => ({
+    categories: state.categories,
+    posts: state.posts
+}))(Home)

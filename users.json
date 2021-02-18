@@ -111,6 +111,48 @@
       "id": 17,
       "image": "",
       "isAdmin": true
+    },
+    {
+      "username": "Mionder",
+      "email": "sergejjolejj@gmail.com",
+      "password": "Prikol63@",
+      "passwordConfirm": "Prikol63@",
+      "id": 18
+    },
+    {
+      "username": "Mionder228",
+      "email": "sergejjolejj00@gmail.com",
+      "password": "Pr!ikol63",
+      "passwordConfirm": "Pr!ikol63",
+      "id": 19
+    },
+    {
+      "username": "Mionder229",
+      "email": "sergejjolejj11@gmail.com",
+      "password": "Pr!kol63",
+      "passwordConfirm": "Pr!kol63",
+      "id": 20
+    },
+    {
+      "username": "Mionder229",
+      "email": "sergejjolejj11@gmail.com",
+      "password": "Pr!kol63",
+      "passwordConfirm": "Pr!kol63",
+      "id": 21
+    },
+    {
+      "username": "Mionder229",
+      "email": "sergejjolejj11@gmail.com",
+      "password": "Pr!kol63",
+      "passwordConfirm": "Pr!kol63",
+      "id": 22
+    },
+    {
+      "username": "Mionder229",
+      "email": "sergejjolejj11@gmail.com",
+      "password": "Pr!kol63",
+      "passwordConfirm": "Pr!kol63",
+      "id": 23
     }
   ],
   "posts": [
@@ -202,6 +244,16 @@
       "category": "books",
       "ownerId": "17",
       "clicks": 0
+    },
+    {
+      "name": "New travel to Japan",
+      "date": "2021-02-17",
+      "info": "Travel story to Japan\nTravel story to Japan\nTravel story to Japan\nTravel story to Japan\nTravel story to Japan",
+      "category": "travel",
+      "status": "Not Approved",
+      "ownerId": "undefined",
+      "clicks": 0,
+      "id": 18
     }
   ],
   "categotiesPosts": [
@@ -225,15 +277,15 @@
     },
     {
       "title": "Video console",
-      "id": 2,
       "price": 12.5,
       "currency": "$",
       "description": "Video console to play games",
-      "ownerId": 17,
-      "img": "https://images.pexels.com/photos/4511372/pexels-photo-4511372.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940",
       "status": "Approved",
+      "ownerId": 17,
       "clicks": 0,
-      "orders": 0
+      "img": "https://images.pexels.com/photos/4511372/pexels-photo-4511372.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940",
+      "orders": 0,
+      "id": 2
     },
     {
       "title": "Lights",

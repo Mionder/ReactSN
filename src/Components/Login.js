@@ -1,6 +1,9 @@
 import React, {Component} from "react";
 import "../assets/registration.css";
-export default class Login extends Component{
+import {saveUsers} from "../actions/actionCreator";
+import {connect} from "react-redux";
+
+class Login extends Component {
     state = {
         email: "",
         password: "",
@@ -9,14 +12,14 @@ export default class Login extends Component{
 
     signIn = async () => {
         await fetch("http://localhost:3000/users")
-            .then((res)=>{
+            .then((res) => {
                 return res.json()
             })
-            .then(async(data)=>{
+            .then(async (data) => {
                 console.log(data);
                 await this.setState({users: data})
             })
-            .catch((err)=>{
+            .catch((err) => {
                 console.log(err)
             })
 
@@ -25,8 +28,8 @@ export default class Login extends Component{
 
     validateUser = () => {
         const {users, email, password} = this.state;
-        users.forEach((item)=>{
-            if(item.email === email && item.password === password){
+        users.forEach((item) => {
+            if (item.email === email && item.password === password) {
                 localStorage.setItem("username", item.username);
                 localStorage.setItem("userId", item.id);
                 window.location.href = window.location.origin;
@@ -35,13 +38,13 @@ export default class Login extends Component{
     }
 
     render() {
-        return(
+        return (
             <div className="login-page">
                 <div className="_container">
                     <div className="login-wrapper">
 
                         <input
-                            onChange={(e)=>this.setState({email: e.target.value})}
+                            onChange={(e) => this.setState({email: e.target.value})}
                             placeholder="Enter email"
                             name="email"
                             type="text"
@@ -49,7 +52,7 @@ export default class Login extends Component{
                         />
 
                         <input
-                            onChange={(e)=>this.setState({password: e.target.value})}
+                            onChange={(e) => this.setState({password: e.target.value})}
                             placeholder="Enter password"
                             name="password"
                             type="password"
@@ -63,3 +66,7 @@ export default class Login extends Component{
         )
     }
 }
+
+export default connect(state => ({
+    users: state.users,
+}), {saveUsers})(Login);
