@@ -1,8 +1,12 @@
 .App {
   text-align: center;
 }
+a{
+  text-decoration: none !important;
+}
 .content{
   min-height: calc(100vh - 70px - 60px);
+  padding: 20px 0;
 }
 *{
   font-family: 'Montserrat', sans-serif !important;

@@ -104,6 +104,17 @@
     border-top: none;
 }
 
+.controls-product{
+    border: 1px solid #787878;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    border-radius: 8px;
+    width: 48%;
+    padding: 10px;
+    /*border-top: none;*/
+}
+
 .btn-post-admin{
     width: 100%;
     max-width: 120px;

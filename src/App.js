@@ -12,6 +12,8 @@ import CreatePost from "./Components/CreatePost";
 import Admin from "./Components/Admin";
 import PostPage from "./Components/PostPage";
 import Footer from "./Components/Footer";
+import Shop from "./Components/Shop";
+import CreateProduct from "./Components/CreateProduct";
 // import {useFormik} from "formik";
 function App() {
     // const [users, setUsers] = useState([]);
@@ -30,6 +32,8 @@ function App() {
                   <Route path="/login" component={Login} exact/>
                   <Route path="/profile/:username" component={Profile} exact />
                   <Route path="/create-post" component={CreatePost} exact/>
+                  <Route path="/shop" component={Shop} exact/>
+                  <Route path="/shop/create-product" component={CreateProduct} exact/>
               </div>
               <Footer />
           </div>

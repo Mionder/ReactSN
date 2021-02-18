@@ -1,0 +1,25 @@
+.create-product-form{
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    flex-direction: column;
+    max-width: 600px;
+    width: 100%;
+}
+.product-input{
+    width: 100%;
+    height: 40px;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    padding: 5px 10px;
+    border: 1px solid #a100ad;
+    background: #ffffff;
+    border-radius: 4px;
+    margin: 10px 0;
+}
+
+.product-textarea{
+    resize: none;
+    height: 200px;
+}

@@ -10,6 +10,16 @@
     text-transform: uppercase;
     text-align: left;
 }
+@media(max-width: 768px){
+    .title{
+        font-size: 26px;
+    }
+}
+@media(max-width: 414px){
+    .title{
+        font-size: 18px;
+    }
+}
 .form-post{
     display: flex;
     flex-direction: column;

@@ -71,3 +71,13 @@
 .user-info{
     padding-left: 30px;
 }
+
+@media(max-width: 768px){
+    .profile-wrapper{
+        flex-direction: column;
+    }
+    .profile-info,.user-posts-wrapper{
+        max-width: 100%;
+        margin: 10px 0;
+    }
+}

@@ -1,5 +1,7 @@
 import React, {Component} from "react";
 import AdminPost from "./AdminPost";
+import Product from "./Product";
+import AdminProduct from "./AdminProduct";
 
 export default class Admin extends Component {
     state = {
@@ -13,6 +15,7 @@ export default class Admin extends Component {
             "games"
         ],
         mostPosts: "",
+        products: [],
     }
 
     async componentDidMount() {
@@ -21,7 +24,16 @@ export default class Admin extends Component {
                 return res.json()
             })
             .then(async (data) => {
-                await this.setState({posts: data, isReady: true});
+                await this.setState({posts: data});
+            })
+            .catch(error => console.log(error))
+
+        await fetch("http://localhost:3000/products")
+            .then((res) => {
+                return res.json()
+            })
+            .then(async (data) => {
+                await this.setState({products: data, isReady:true});
             })
             .catch(error => console.log(error))
 
@@ -37,6 +49,15 @@ export default class Admin extends Component {
             )
         })
     }
+
+    renderProducts = (arr) => {
+        return arr.map((item, index)=>{
+            return(
+                <AdminProduct key={index} product={item} />
+            )
+        })
+    }
+
     countAnalytic = (arr) => {
         const {categories} = this.state;
         let clicksAmount = 0;
@@ -65,10 +86,11 @@ export default class Admin extends Component {
     }
 
     render() {
-        const {isReady, posts, clicksAmount, popularCategory, mostPosts} = this.state;
-        let renderedPosts;
+        const {isReady, posts, clicksAmount, popularCategory, mostPosts, products} = this.state;
+        let renderedPosts, renderedProducts;
         if (isReady) {
             renderedPosts = this.renderPosts(posts);
+            renderedProducts = this.renderProducts(products)
         }
         return (
             <div className="admin-panel">
@@ -82,7 +104,7 @@ export default class Admin extends Component {
                     </div>
                     <div className="statistic">
                         <p>
-                            <span className="stat-title">Amount clicks:  </span> {clicksAmount}
+                            <span className="stat-title">Amount clicks on posts:  </span> {clicksAmount}
                         </p>
                         <p>
                             <span className="stat-title">Most clicks on:  </span>{popularCategory}
@@ -92,7 +114,9 @@ export default class Admin extends Component {
                         </p>
                     </div>
 
-
+                    <div className="products-wrapper">
+                        {renderedProducts}
+                    </div>
 
                     <div className="posts-wrapper">
                         {renderedPosts}

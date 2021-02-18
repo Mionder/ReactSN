@@ -115,33 +115,13 @@
   ],
   "posts": [
     {
-      "name": "New post v2",
-      "date": "2021-02-25",
-      "info": "post text",
-      "id": 2,
-      "status": "Rejected",
-      "category": "books",
-      "clicks": 0,
-      "ownerId": 17
-    },
-    {
-      "name": "post in time",
-      "date": "2021-02-14",
-      "info": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
-      "id": 3,
-      "status": "Approved",
-      "category": "books",
-      "clicks": 15,
-      "ownerId": 17
-    },
-    {
       "name": "rtkrkr",
       "date": "2021-02-08",
       "info": "\"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.\"",
       "id": 9,
       "status": "Approved",
       "category": "books",
-      "clicks": 11,
+      "clicks": 12,
       "ownerId": 17
     },
     {
@@ -212,6 +192,16 @@
       "category": "work",
       "clicks": 2,
       "ownerId": "16"
+    },
+    {
+      "name": "Books post",
+      "date": "2021-02-18",
+      "info": "Books post info\nBooks post info\nBooks post info\nBooks post info",
+      "id": 17,
+      "status": "Approved",
+      "category": "books",
+      "ownerId": "17",
+      "clicks": 0
     }
   ],
   "categotiesPosts": [
@@ -219,5 +209,67 @@
     "work",
     "books",
     "games"
+  ],
+  "products": [
+    {
+      "title": "Book",
+      "price": 20.5,
+      "currency": "$",
+      "description": "Small book to be read",
+      "status": "Rejected",
+      "ownerId": 17,
+      "clicks": 0,
+      "img": "https://images.pexels.com/photos/698928/pexels-photo-698928.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940",
+      "orders": 0,
+      "id": 1
+    },
+    {
+      "title": "Video console",
+      "id": 2,
+      "price": 12.5,
+      "currency": "$",
+      "description": "Video console to play games",
+      "ownerId": 17,
+      "img": "https://images.pexels.com/photos/4511372/pexels-photo-4511372.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940",
+      "status": "Approved",
+      "clicks": 0,
+      "orders": 0
+    },
+    {
+      "title": "Lights",
+      "price": "10",
+      "currency": "$",
+      "description": "Some lights",
+      "status": "Approved",
+      "ownerId": "17",
+      "clicks": 0,
+      "img": "https://images.pexels.com/photos/5605125/pexels-photo-5605125.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940",
+      "orders": 0,
+      "id": 3
+    },
+    {
+      "title": "Music box",
+      "price": "21",
+      "currency": "€",
+      "description": "Music box to play music",
+      "status": "Approved",
+      "ownerId": "17",
+      "clicks": 0,
+      "img": "https://images.pexels.com/photos/4468812/pexels-photo-4468812.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940",
+      "orders": 0,
+      "id": 4
+    },
+    {
+      "title": "iPhone",
+      "price": "150",
+      "currency": "€",
+      "description": "Apple iPhone",
+      "status": "Approved",
+      "ownerId": "17",
+      "clicks": 0,
+      "img": "https://images.pexels.com/photos/6804422/pexels-photo-6804422.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940",
+      "orders": 0,
+      "id": 5
+    }
   ]
 }

@@ -41,7 +41,7 @@ export default class Header extends Component{
                         <ul className="header-list">
                             <li className="header-item"><Link to="/">Home</Link></li>
                             <li className="header-item"><Link to="/create-post">Create Post</Link></li>
-                            <li className="header-item">Shop</li>
+                            <li className="header-item"><Link to="/shop">Shop</Link></li>
                             <li className="header-item">{username ? <Link to={`/profile/${username}`}>Hello, {username}</Link>  : <Link to="/login">Sign in</Link>}</li>
                             {fullUser.isAdmin &&<li className="header-item"> <Link to="/admin">Admin panel</Link></li>}
                             {username &&<li className="header-item"> <Link onClick={()=>localStorage.setItem("username",undefined)} to="/login">Log out</Link></li>}
@@ -57,7 +57,7 @@ export default class Header extends Component{
                         <ul className="header-mobile-list">
                             <li className="header-item"><Link to="/">Home</Link></li>
                             <li className="header-item"><Link to="/create-post">Create Post</Link></li>
-                            <li className="header-item">Shop</li>
+                            <li className="header-item"><Link to="/shop">Shop</Link></li>
                             <li className="header-item">{username ? <Link to={`/profile/${username}`}>Hello, {username}</Link>  : <Link to="/login">Sign in</Link>}</li>
                             {fullUser.isAdmin &&<li className="header-item"> <Link to="/admin">Admin panel</Link></li>}
                             {username &&<li className="header-item"> <Link onClick={()=>localStorage.setItem("username",undefined)} to="/login">Log out</Link></li>}
